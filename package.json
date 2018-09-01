@@ -1,0 +1,33 @@
+{
+  "name": "kamu_enterprise_web",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "firebase": "^5.3.1",
+    "font-awesome": "^4.7.0",
+    "image-compressor.js": "^1.1.4",
+    "react": "^16.4.1",
+    "react-animate-css": "0.0.1",
+    "react-animated-css": "^1.0.4",
+    "react-cookies": "^0.1.0",
+    "react-dom": "^16.4.1",
+    "react-dropzone": "^5.0.1",
+    "react-lottie": "^1.2.3",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "react-switch": "^3.0.4",
+    "react-tag-input": "^5.1.2",
+    "react-timeago": "^4.1.9",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

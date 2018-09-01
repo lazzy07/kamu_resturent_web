@@ -1,0 +1,143 @@
+import React, {Component} from 'react';
+import Lottie from 'react-lottie';
+import {Link} from 'react-router-dom';
+
+import * as animationData from '../../background_anim/data.json';
+import {InputBox} from '../../components/form/InputBox';
+import Button from '../../components/button/Button'
+import {Animated} from 'react-animated-css'
+
+
+export default class LoginScreen extends Component{
+    render(){
+        const defaultOptions = {
+            loop: true,
+            autoplay: true,
+            animationData: animationData,
+            rendererSettings: {
+              preserveAspectRatio: 'xMidYMid slice'
+            }
+        }
+
+        return(
+            <div style={{
+                position: 'relative'
+            }}>
+                <div style={{
+                    backgroundImage: "url('./dependencies/pics/egg.jpg')",
+                    height: '100vh',
+                    backgroundSize: 'cover',
+                    filter: 'blur(5px)'
+                }}/>        
+                <div className="col-12 col-md-9" style={{
+                    paddingLeft: "5vw",
+                    paddingRight: '5vw',
+                    paddingTop: '5vh',
+                    paddingBottom: '10vh',
+                    height: '500px',
+                    background: 'rgba(255,255,255,0.8)',
+                    borderRadius: '20px',
+                    // background: "url('./dependencies/pics/pattern_light.png')",
+                    position: 'fixed',
+                    transform: 'translate(-50%, -50%)',
+                    top: '50vh',
+                    left: '50vw'
+                }}>
+                    <div className='row'>
+                        <div 
+                            className="col-12 col-md-6 align-items-center"
+                            style={{
+                                position: 'relative',
+                                //transform: 'translate(0, -50%)',
+                                //top: '250px',
+                                //left: '0px'
+                        }}>
+                            <Animated animationIn='fadeInDown' isVisible={true}>
+                                <h2 className='text-center' style={{
+                                    color: '#252525'
+                                }}>
+                                    Kamu <span style={{color: '#e8232d'}}>Login</span>
+                                </h2>
+                            </Animated>
+                            <div className="d-none d-md-block">
+                                <Lottie options={defaultOptions}
+                                    height={"250px"}
+                                    width={"200px"}
+                                />
+                            </div>
+                        </div>
+                        <div 
+                            className="d-none d-md-block" 
+                            style={{
+                                backgroundColor: "rgba(0,0,0,0.6)",
+                                width: '2px',
+                                position: 'absolute',
+                                transform: 'translate(0, -50%)',
+                                top: '50%',
+                                left: '50%',
+                                height:'80%'
+                            }}
+                        />
+                        <div className="col-12 col-md-6" style={{
+                            paddingLeft: "20px"
+                        }}>
+                            <form>
+                                <Animated animationIn='fadeInRight' animationInDelay={200} isVisible={true}>
+                                    <InputBox 
+                                        label="Enter Email" 
+                                        type="email" 
+                                        placeHolder="Enter Email" 
+                                        description="Eg: cyborgstudios@cyborg.com"
+                                    />
+                                </Animated>
+                                <Animated animationIn='fadeInDown' animationInDelay={250} isVisible={true}>
+                                    <InputBox 
+                                        label="Enter Password" 
+                                        type="password" 
+                                        placeHolder="Enter password" 
+                                        description="Spaces are not allowed"
+                                    />
+                                </Animated>
+                                <Animated animationIn='fadeIn' animationInDelay={300} isVisible={true}>
+                                    <div className="form-check" style={{
+                                        paddingBottom: "10px",
+                                        paddingLeft: 20
+                                    }}>
+                                        <input type="checkbox" className="form-check-input"/>
+                                        <label className="form-check-label" htmlFor="exampleCheck1">Keep me logged in</label>
+                                    </div>
+                                </Animated>
+                                <Animated animationIn='fadeInUp' animationInDelay={350} isVisible={true}>
+                                    <div className="row col-12 justify-content-center fadeIn">
+                                        <Button text="Login" type="submit"/>
+                                    </div>
+                                </Animated>
+                            </form>
+                            <div style={{marginTop:'10px',display: "flex", flexWrap: 'wrap', justifyContent: 'center'}}>
+                                <div>
+                                    <button className="loginBtn loginBtn--facebook">
+                                        Login with Facebook
+                                    </button>
+                                </div>
+                                <div>
+                                    <button className="loginBtn loginBtn--google">
+                                        Login with Google
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                <div style={{paddingTop: '15px'}}>
+                                    <b>Don't have an account?&nbsp;
+                                        <Link to={"/signup"} style={{color: '#e8232d'}}>
+                                            <b className="icon">Sign up</b>
+                                        </Link>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
