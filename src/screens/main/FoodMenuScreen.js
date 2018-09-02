@@ -5,6 +5,7 @@ import Navbar from "../../components/navbar/Navbar";
 import * as animationData from "../../animations/create_food_menu/data.json";
 
 import FoodMenuTab from "../../components/food_menu/FoodMenuTab";
+import FoodMenuElementsList from "../../components/food_menu/FoodMenuElementsList";
 
 const defaultOptions = {
   loop: true,
@@ -19,9 +20,16 @@ class FoodMenuScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isNewMenuButtonClicked: false
+      isNewMenuButtonClicked: false,
+      elementsListType: "menus"
     };
   }
+
+  changeActiveListType = type => {
+    this.setState({
+      elementsListType: type
+    });
+  };
 
   foodMenu = null;
 
@@ -34,7 +42,20 @@ class FoodMenuScreen extends Component {
               paddingTop: "50px"
             }}
           >
-            <FoodMenuTab />
+            <FoodMenuTab
+              setActive={this.changeActiveListType}
+              active={this.state.elementsListType}
+            />
+          </div>
+          <div
+            style={{
+              position: "fixed",
+              bottom: "50px",
+              left: "0px",
+              width: "100%"
+            }}
+          >
+            <FoodMenuElementsList listType={this.state.elementsListType} />
           </div>
           <Navbar active={5} />
         </div>
