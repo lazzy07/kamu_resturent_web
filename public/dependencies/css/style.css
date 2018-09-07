@@ -34,9 +34,11 @@ body {
   color: "#7a7a7a";
 }
 
+/* SCROLLBAR STYLES */
 /* width */
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 /* Track */
