@@ -46,6 +46,7 @@ export class FoodMenuListItemCard extends Component {
               >
                 {getStarRating(this.props.rating)}
               </span>
+              <br />
               <StarRating rating={this.props.rating} />
               <span>
                 Price : <b>{this.props.price}</b>
@@ -79,6 +80,7 @@ export class FoodMenuListItemCard extends Component {
             </div>
             <div>
               <i
+                onClick={() => this.props.setEditor("item")}
                 style={{ padding: "10px" }}
                 className="fa fa-lg fa-edit hoverRed hovarable"
               />

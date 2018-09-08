@@ -9,6 +9,7 @@ export const FoodMenuCategoriesList = props => {
       <AddNewButton label="category" />
       <div style={{ margin: "10px", height: "100%" }}>
         <FoodMenuListCategoryCard
+          setEditor={props.setEditor}
           name="My Category 01"
           content={[{ name: "las" }, { name: "las" }, { name: "las" }]}
           rating={1.55}

@@ -6,6 +6,7 @@ import * as animationData from "../../animations/create_food_menu/data.json";
 
 import FoodMenuTab from "../../components/food_menu/FoodMenuTab";
 import FoodMenuElementsList from "../../components/food_menu/FoodMenuElementsList";
+import FoodMenuEditorRender from "../../components/food_menu/editors/FoodMenuEditorRender";
 
 const defaultOptions = {
   loop: true,
@@ -21,13 +22,20 @@ class FoodMenuScreen extends Component {
     super(props);
     this.state = {
       isNewMenuButtonClicked: false,
-      elementsListType: "menus"
+      elementsListType: "menus",
+      editorType: "menu"
     };
   }
 
   changeActiveListType = type => {
     this.setState({
       elementsListType: type
+    });
+  };
+
+  changeActiveEditorType = type => {
+    this.setState({
+      editorType: type
     });
   };
 
@@ -39,14 +47,15 @@ class FoodMenuScreen extends Component {
         <div>
           <div
             style={{
-              paddingTop: "50px"
+              paddingTop: "70px"
             }}
           >
-            <FoodMenuTab
-              setActive={this.changeActiveListType}
-              active={this.state.elementsListType}
-            />
+            <FoodMenuEditorRender type={this.state.editorType} />
           </div>
+          <FoodMenuTab
+            setActive={this.changeActiveListType}
+            active={this.state.elementsListType}
+          />
           <div
             style={{
               position: "fixed",
@@ -55,7 +64,10 @@ class FoodMenuScreen extends Component {
               width: "100%"
             }}
           >
-            <FoodMenuElementsList listType={this.state.elementsListType} />
+            <FoodMenuElementsList
+              setEditor={type => this.changeActiveEditorType(type)}
+              listType={this.state.elementsListType}
+            />
           </div>
           <Navbar active={5} />
         </div>

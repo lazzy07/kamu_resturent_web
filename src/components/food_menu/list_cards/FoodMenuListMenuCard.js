@@ -30,7 +30,10 @@ export class FoodMenuListMenuCard extends Component {
                 borderBottomColor: "#7a7a7a"
               }}
             >
-              <i className="fa fa-edit fa-lg hovarable hoverRed" />
+              <i
+                onClick={() => this.props.setEditor("menu")}
+                className="fa fa-edit fa-lg hovarable hoverRed"
+              />
             </div>
             <p>
               <b
@@ -52,6 +55,7 @@ export class FoodMenuListMenuCard extends Component {
               >
                 {getStarRating(this.props.rating)}
               </span>
+              <br />
               <StarRating rating={this.props.rating} />
               <span>
                 Price : <b>{this.props.price}</b>

@@ -68,7 +68,6 @@ class CreateOfferForm extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <form>
         <div className="col-6 col-md-4">

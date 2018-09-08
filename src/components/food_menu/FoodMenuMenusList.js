@@ -8,7 +8,12 @@ export const FoodMenuMenusList = props => {
     <HorizontalScrollBar>
       <AddNewButton label="menu" />
       <div style={{ margin: "10px", height: "100%" }}>
-        <FoodMenuListMenuCard name="My Menu 01" rating={5} price={4000} />
+        <FoodMenuListMenuCard
+          setEditor={props.setEditor}
+          name="My Menu 01"
+          rating={5}
+          price={4000}
+        />
       </div>
     </HorizontalScrollBar>
   );

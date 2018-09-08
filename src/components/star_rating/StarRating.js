@@ -30,8 +30,9 @@ export const StarRating = props => {
   }
 
   return (
-    <div style={{ margin: "0px", padding: "0px" }}>
-      <p style={{ margin: "0px", padding: "0px" }}>{starArray}</p>
-    </div>
+    <span style={{ margin: "0px", padding: "0px" }}>
+      <span style={{ margin: "0px", padding: "0px" }}>{starArray}</span>
+      <br />
+    </span>
   );
 };

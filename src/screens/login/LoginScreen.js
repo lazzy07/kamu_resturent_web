@@ -384,14 +384,14 @@ class LoginScreen extends Component {
                       />
                     </Animated>
                     {/* <Animated animationIn='fadeIn' animationInDelay={300} isVisible={true}>
-                                            <div className="form-check" style={{
-                                                paddingBottom: "10px",
-                                                paddingLeft: 20
-                                            }}>
-                                                <input type="checkbox" className="form-check-input"/>
-                                                <label className="form-check-label" htmlFor="exampleCheck1">Keep me logged in</label>
-                                            </div>
-                                        </Animated> */}
+                        <div className="form-check" style={{
+                            paddingBottom: "10px",
+                            paddingLeft: 20
+                        }}>
+                            <input type="checkbox" className="form-check-input"/>
+                            <label className="form-check-label" htmlFor="exampleCheck1">Keep me logged in</label>
+                        </div>
+                    </Animated> */}
                     <div>
                       <Animated
                         animationIn="fadeInRight"

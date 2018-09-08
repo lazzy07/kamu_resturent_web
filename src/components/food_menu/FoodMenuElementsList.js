@@ -8,19 +8,19 @@ class FoodMenuElementsList extends Component {
     if (this.props.listType === "menus") {
       return (
         <div>
-          <FoodMenuMenusList />
+          <FoodMenuMenusList setEditor={this.props.setEditor} />
         </div>
       );
     } else if (this.props.listType === "items") {
       return (
         <div>
-          <FoodMenuItemsList />
+          <FoodMenuItemsList setEditor={this.props.setEditor} />
         </div>
       );
     } else {
       return (
         <div>
-          <FoodMenuCategoriesList />
+          <FoodMenuCategoriesList setEditor={this.props.setEditor} />
         </div>
       );
     }

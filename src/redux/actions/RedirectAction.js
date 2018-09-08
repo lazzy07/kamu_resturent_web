@@ -1,2 +1,1 @@
-import {REDIRECT_TO} from './types';
-
+import { REDIRECT_TO } from "./types";

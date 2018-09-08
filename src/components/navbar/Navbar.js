@@ -114,7 +114,7 @@ class Navbar extends Component {
           </Link>
 
           <Link to={routes.RESTURANT_FOODMENU}>
-            <div onClick={() => this.setActive(4)} style={this.navStyles}>
+            <div onClick={() => this.setActive(5)} style={this.navStyles}>
               <NavButton
                 isActive={this.state.active[5]}
                 icon="fa fa-list-ul fa-lg"
