@@ -33,6 +33,7 @@ export class EditableTextBox extends Component {
             display: "inline-block",
             margin: 0,
             padding: "4px",
+            minWidth: "50px",
             borderRadius: "5px",
             fontSize: 18,
             outline: 0,

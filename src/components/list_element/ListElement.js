@@ -12,7 +12,8 @@ export const ListElement = props => {
         minWidth: "230px",
         marginLeft: "5px",
         marginRight: "5px",
-        whiteSpace: "nowrap"
+        whiteSpace: "nowrap",
+        backgroundColor: "#fff"
       }}
     >
       {props.children}

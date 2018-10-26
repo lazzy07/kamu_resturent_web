@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ImageZoom from "react-medium-image-zoom";
 
 class ProgressiveImage extends Component {
   state = {
@@ -35,14 +36,26 @@ class ProgressiveImage extends Component {
   style = loading => {
     return {
       transition: "0.5s filter linear",
-      filter: `${loading ? "blur(50px)" : ""}`
+      filter: `${loading ? "blur(50px)" : ""}`,
+      width: "100%",
+      ...this.props.style
     };
   };
 
   render() {
     const { currentImage, loading } = this.state;
     const { alt } = this.props;
-    return <img style={this.style(loading)} src={currentImage} alt={alt} />;
+    // return <img style={this.style(loading)} src={currentImage} alt={alt} />;
+    return (
+      <ImageZoom
+        image={{
+          src: currentImage,
+          alt: alt,
+          className: "img",
+          style: this.style(loading)
+        }}
+      />
+    );
   }
 }
 

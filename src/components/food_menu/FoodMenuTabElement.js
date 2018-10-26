@@ -16,7 +16,7 @@ export const FoodMenuTabElement = props => {
 
   return (
     <div className="hovarable hoverBlack">
-      <p style={{ paddingTop: "13px", ...styles }}>
+      <p style={{ paddingTop: "9px", ...styles }}>
         <i className={props.icon} />
         &nbsp;
         {props.label}

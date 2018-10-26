@@ -141,3 +141,14 @@ export default class LoginScreen extends Component{
         );
     }
 }
+
+
+
+
+<svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="38.206cm" height="10.548cm">
+<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
+ d="M0.000,222.968 L1083.000,-0.000 L1083.000,299.000 L0.000,299.000 L0.000,222.968 Z"/>
+</svg>

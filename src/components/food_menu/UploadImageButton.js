@@ -28,7 +28,7 @@ class UploadImageButton extends Component {
         <div
           className="uploadPic hovarable hoverRed greyButton"
           style={{
-            maxWidth: "170px",
+            width: "100%",
             textAlign: "center",
             borderRadius: "7px",
             padding: "20px"
@@ -45,7 +45,7 @@ class UploadImageButton extends Component {
         <div
           className="uploadPic hovarable hoverRed greyButton"
           style={{
-            maxWidth: "170px",
+            width: "100%",
             textAlign: "center",
             borderRadius: "7px",
             padding: "20px",
@@ -65,7 +65,7 @@ class UploadImageButton extends Component {
         <div
           className="uploadPic hovarable hoverRed greyButton"
           style={{
-            maxWidth: "170px",
+            width: "100%",
             textAlign: "center",
             borderRadius: "7px",
             padding: "20px"
@@ -94,9 +94,7 @@ class UploadImageButton extends Component {
   uploadProgressHandler = (snapshot, fileToUpload) => {
     let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
     const uploadImage = (
-      <div
-        style={{ position: "relative", minWidth: "100px", minHeight: "100px" }}
-      >
+      <div style={{ position: "relative", width: "100%" }}>
         <img
           style={{
             width: "100%",
@@ -185,15 +183,12 @@ class UploadImageButton extends Component {
       }
     }
     this.props.removeImage(this.state.bucketPath);
-    this.props.removeButton(this.props.id);
   };
 
   onDrop = async (acceptedFiles, rejectedFiles) => {
     if (acceptedFiles.length > 0) {
       const id = Date.now();
       const fileToUpload = acceptedFiles[0];
-
-      this.props.addNewButton();
 
       const uploadImage = (
         <div
@@ -305,7 +300,7 @@ class UploadImageButton extends Component {
           <div
             className="uploadPic hovarable hoverRed greyButton"
             style={{
-              maxWidth: "170px",
+              width: "100%",
               textAlign: "center",
               borderRadius: "7px",
               padding: "20px"
@@ -323,10 +318,7 @@ class UploadImageButton extends Component {
 
   render() {
     return (
-      <div
-        className=""
-        style={{ display: "inline-block", flexDirection: "column" }}
-      >
+      <div className="" style={{ flexDirection: "column" }}>
         <DropZone
           multiple={false}
           maxSize={MAX_IMAGE_SIZE_CAN_UPLOAD * 1024 * 1024}

@@ -5,11 +5,16 @@ class FoodMenuTab extends Component {
   render() {
     return (
       <div
-        style={{ position: "fixed", bottom: "0px", left: "0px", width: "100%" }}
+        style={{
+          position: "fixed",
+          bottom: "170px",
+          left: "0px",
+          width: "100%"
+        }}
       >
         <div
           style={{
-            height: "50px",
+            height: "40px",
             backgroundColor: "#fff",
             boxShadow:
               "0 0px 5px rgba(0,0,0,0.2), 0 0 40px rgba(0,0,0,0.1) inset",

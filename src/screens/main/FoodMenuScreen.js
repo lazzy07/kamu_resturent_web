@@ -59,7 +59,7 @@ class FoodMenuScreen extends Component {
           <div
             style={{
               position: "fixed",
-              bottom: "50px",
+              bottom: "0px",
               left: "0px",
               width: "100%"
             }}

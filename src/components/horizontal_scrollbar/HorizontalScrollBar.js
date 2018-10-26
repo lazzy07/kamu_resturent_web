@@ -10,7 +10,8 @@ export const HorizontalScrollBar = props => {
         overflowX: "scroll",
         overflowY: "hidden",
         paddingLeft: "10px",
-        paddingRight: "10px"
+        paddingRight: "10px",
+        backgroundColor: "#fff"
       }}
     >
       {props.children}
