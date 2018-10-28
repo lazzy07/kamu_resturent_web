@@ -3,6 +3,7 @@ import { FoodMenuEditorTemplate } from "./FoodMenuEditorTemplate";
 
 import { EditableTextBox } from "../../editable_form/textbox/EditableTextbox";
 import FoodMenuCard from "../card/FoodMenuCard";
+import FoodCategoryCard from "../card/FoodCategoryCard";
 
 import { DragDropContext } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
@@ -38,6 +39,9 @@ class FoodMenuCategoriesEdior extends Component {
           <FoodMenuCard />
           <FoodMenuCard />
           <FoodMenuCard />
+          <FoodCategoryCard />
+          <FoodCategoryCard />
+          <FoodCategoryCard />
         </div>
       );
     } else {

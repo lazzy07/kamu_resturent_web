@@ -43,70 +43,224 @@ class FoodMenuCard extends Component {
     const { isDragging, connectDragSource, item } = this.props;
 
     return connectDragSource(
-      <div
-        className="col-12"
-        style={{
-          marginTop: "5px",
-          boxShadow: "0 0px 5px rgba(0,0,0,0.2), 0 0 40px rgba(0,0,0,0.1)",
-          padding: "5px",
-          display: "flex"
-        }}
-      >
-        <div style={{ flex: 4 }}>
-          <ProgressiveImage
-            preview={"/dependencies/pics/egg.jpg"}
-            image={"https://dummyimage.com/2000"}
-          />
-        </div>
+      <div>
         <div
+          className="d-none d-lg-block"
           style={{
-            flex: 8,
-            paddingLeft: "5px",
-            paddingRight: "5px"
+            position: "relative",
+            overflow: "hidden",
+            marginTop: "20px",
+            height: "300px"
           }}
         >
           <div
             style={{
-              fontSize: "1.2em",
-              fontWeight: "bold",
-              overflow: "hidden"
+              position: "absolute",
+              width: "100%",
+              height: "300px",
+              paddingBottom: "10px"
             }}
           >
-            <p>Chicken Submarine</p>
-          </div>
-          <p>
-            <span>Rating : &nbsp;</span>
-            <span
+            <ProgressiveImage
+              preview={"/dependencies/pics/egg.jpg"}
+              image={"/dependencies/pics/egg.jpg"}
               style={{
-                margin: "0px",
-                padding: "5px",
-                fontSize: "26px"
+                transform: "translate(-20%, 0%)",
+                height: "150%",
+                width: "auto"
+              }}
+            />
+          </div>
+          <div
+            className="col-12"
+            style={{
+              background:
+                "linear-gradient(to left, #e5e6e6 60%, transparent 100%)",
+              height: "300px",
+              paddingLeft: "30%",
+              paddingTop: "10px",
+              paddingRight: "10px",
+              paddingBottom: "10px"
+            }}
+          >
+            <h3 style={{ fontWeight: "bold" }}>Chicken Submarine</h3>
+            <p style={{ maxHeight: "90px", overflow: "hidden" }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Phasellus faucibus scelerisque eleifend donec pretium vulputate
+              sapien. Dignissim diam quis enim lobortis scelerisque fermentum
+              dui. Aenean vel elit scelerisque mauris pellentesque pulvinar
+              pellentesque. Ultricies mi eget mauris pharetra et ultrices neque
+              ornare aenean. Sit amet luctus venenatis lectus magna fringilla
+              urna porttitor. Fermentum et sollicitudin ac orci phasellus.
+              Ultrices mi tempus imperdiet nulla malesuada pellentesque elit
+              eget. Tellus orci ac auctor augue mauris augue neque. Fringilla
+              est ullamcorper eget nulla facilisi etiam dignissim diam. Quisque
+              non tellus orci ac auctor augue mauris augue. Ultrices mi tempus
+              imperdiet nulla malesuada pellentesque elit eget. Egestas pretium
+              aenean pharetra magna.
+            </p>
+            <br />
+            <h5>
+              Rating : {getStarRating(4.5)}
+              <br />
+              <StarRating rating={4.5} />
+            </h5>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center"
               }}
             >
-              {getStarRating(4.5)}
-            </span>
-            <br />
-            <div style={{ paddingRight: "5px" }}>
-              <StarRating rating={4.5} />
+              <div style={{ paddingRight: "10px" }}>
+                <Button text="Read More" />
+              </div>
+              <div>
+                <Button text="Order" />
+              </div>
             </div>
-          </p>
-        </div>
-        <div style={{ textAlign: "right", flex: 8 }}>
-          <p>
-            <span style={styles.discountedPrice}>Rs 1000</span>
-            &nbsp;
-            <span
-              style={
-                this.props.isDiscount
-                  ? styles.discountPriceTag
-                  : styles.nodiscount
-              }
+            <div
+              style={{
+                backgroundColor: "#252525",
+                color: "#fff",
+                padding: "10px",
+                position: "absolute",
+                fontWeight: "bold",
+                fontSize: "20px",
+                left: "0px",
+                top: "0px"
+              }}
             >
-              Rs 1000
-            </span>
-          </p>
+              Rs. 1000/=
+            </div>
+            <div
+              style={{
+                backgroundColor: "#e8232d",
+                color: "#fff",
+                padding: "10px",
+                position: "absolute",
+                fontWeight: "bold",
+                fontSize: "20px",
+                left: "0px",
+                top: "0px"
+              }}
+            >
+              <div style={{ fontSize: "14px" }}>
+                <strike>Rs. 1000/=</strike>
+              </div>
+              <div style={{}}>Rs. 2000/=</div>
+            </div>
+          </div>
         </div>
-        <hr />
+        <div
+          className="d-lg-none"
+          style={{
+            overflow: "hidden",
+            position: "relative",
+            marginTop: "10px"
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              height: "450px",
+              paddingBottom: "10px"
+            }}
+          >
+            <ProgressiveImage
+              preview={"/dependencies/pics/egg.jpg"}
+              image={"/dependencies/pics/egg.jpg"}
+              style={{
+                transform: "translate(0%, -20%)",
+                height: "auto",
+                width: "100%"
+              }}
+            />
+          </div>
+          <div
+            className="col-12"
+            style={{
+              background:
+                "linear-gradient(to top, #e5e6e6 70%, transparent 100%)",
+              height: "450px",
+              paddingLeft: "10px",
+              paddingTop: "30%",
+              paddingRight: "10px",
+              paddingBottom: "10px"
+            }}
+          >
+            <h3 style={{ fontWeight: "bold" }}>Chicken Submarine</h3>
+            <p style={{ maxHeight: "90px", overflow: "hidden" }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Phasellus faucibus scelerisque eleifend donec pretium vulputate
+              sapien. Dignissim diam quis enim lobortis scelerisque fermentum
+              dui. Aenean vel elit scelerisque mauris pellentesque pulvinar
+              pellentesque. Ultricies mi eget mauris pharetra et ultrices neque
+              ornare aenean. Sit amet luctus venenatis lectus magna fringilla
+              urna porttitor. Fermentum et sollicitudin ac orci phasellus.
+              Ultrices mi tempus imperdiet nulla malesuada pellentesque elit
+              eget. Tellus orci ac auctor augue mauris augue neque. Fringilla
+              est ullamcorper eget nulla facilisi etiam dignissim diam. Quisque
+              non tellus orci ac auctor augue mauris augue. Ultrices mi tempus
+              imperdiet nulla malesuada pellentesque elit eget. Egestas pretium
+              aenean pharetra magna.
+            </p>
+            <br />
+            <h5>
+              Rating : {getStarRating(4.5)}
+              <br />
+              <StarRating rating={4.5} />
+            </h5>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center"
+              }}
+            >
+              <div style={{ paddingRight: "10px" }}>
+                <Button text="Read More" />
+              </div>
+              <div>
+                <Button text="Order" />
+              </div>
+            </div>
+            <div
+              style={{
+                backgroundColor: "#252525",
+                color: "#fff",
+                padding: "10px",
+                position: "absolute",
+                fontWeight: "bold",
+                fontSize: "20px",
+                left: "0px",
+                top: "0px"
+              }}
+            >
+              Rs. 1000/=
+            </div>
+            <div
+              style={{
+                backgroundColor: "#e8232d",
+                color: "#fff",
+                padding: "10px",
+                position: "absolute",
+                fontWeight: "bold",
+                fontSize: "20px",
+                left: "0px",
+                top: "0px"
+              }}
+            >
+              <span style={{ fontSize: "14px" }}>
+                <strike>Rs. 1000/=</strike>
+              </span>
+              &nbsp;
+              <span style={{}}>Rs. 2000/=</span>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
