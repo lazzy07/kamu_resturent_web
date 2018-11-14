@@ -281,22 +281,3 @@ div.ReactTags__suggestions ul li.ReactTags__activeSuggestion {
   background: #b7cfe0;
   cursor: pointer;
 }
-
-svg .title {
-  font-size: 20px;
-  letter-spacing: 5px;
-}
-
-svg #base {
-  fill: white;
-  -webkit-mask: url(#mask);
-  mask: url(#mask);
-}
-
-svg text {
-  text-anchor: middle;
-}
-
-svg #alpha {
-  fill: white;
-}
