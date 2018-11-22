@@ -7,7 +7,6 @@ import ProgressiveImage from "../../../image_loader/ImageLoader";
 export default class CardCarousel extends Component {
   constructor(props) {
     super(props);
-
     this.renderContent = [];
   }
 
@@ -20,8 +19,8 @@ export default class CardCarousel extends Component {
           style={{ padding: "20px", backgroundColor: "#e5e6e6" }}
         >
           <ProgressiveImage
-            preview={"/dependencies/pics/egg.jpg"}
-            image={"/dependencies/pics/egg.jpg"}
+            preview={elem.imagePreview}
+            image={elem.image}
             style={{
               transform: "translate(0%, 0%)"
             }}
@@ -37,10 +36,10 @@ export default class CardCarousel extends Component {
               paddingRight: "5px"
             }}
           >
-            <h3>Submarine</h3>
-            <span>Rs 1000/=</span>
+            <h3>{elem.name}</h3>
+            <span>{elem.price}</span>
             <br />
-            <strike>Rs 9000/=</strike>
+            <strike>{elem.originalPrice}</strike>
           </div>
         </div>
       );
@@ -48,7 +47,7 @@ export default class CardCarousel extends Component {
   };
 
   render() {
-    this.contentRender([1, 2, 3]);
+    this.contentRender(this.props.data);
     return (
       <div>
         <Carousel

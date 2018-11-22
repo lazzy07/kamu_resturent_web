@@ -4,6 +4,7 @@ export const AddNewButton = props => {
   return (
     <div
       className="uploadPic hovarable hoverRed greyButton"
+      onClick={props.onClick}
       style={{
         height: "90%",
         maxWidth: "120px",

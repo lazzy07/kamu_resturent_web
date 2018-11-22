@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import FoodMenuItemEditor from "./FoodMenuItemEditor";
 import FoodMenuCategoriesEditor from "./FoodMenuCategoriesEditor";
 import FoodMenuMenuEditor from "./FoodMenuMenuEditor";
+import { connect } from "react-redux";
+
+import {
+  loadFoodCategories,
+  loadFoodItems,
+  loadFoodMenus
+} from "../../../redux/actions/FoodMenuActions";
 
 const data = {
   name: "My_Item_01",
@@ -32,9 +39,16 @@ const dataMenu = {
 };
 
 class FoodMenuEditorRender extends Component {
+  componentWillMount = () => {
+    this.props.loadFoodMenus();
+    this.props.loadFoodCategories();
+    this.props.loadFoodItems();
+  };
+
   divStyles = {
     marginBottom: "250px"
   };
+
   render() {
     if (this.props.type === "menu") {
       return (
@@ -58,4 +72,21 @@ class FoodMenuEditorRender extends Component {
   }
 }
 
-export default FoodMenuEditorRender;
+const mapStateToProps = state => {
+  return {
+    menus: state.foodMenuState.menus,
+    categories: state.foodMenuState.categories,
+    items: state.foodMenuState.items
+  };
+};
+
+const mapDispatchToProps = {
+  loadFoodMenus,
+  loadFoodCategories,
+  loadFoodItems
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FoodMenuEditorRender);

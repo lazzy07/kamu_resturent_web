@@ -6,7 +6,7 @@ import { FoodMenuListItemCard } from "./list_cards/FoodMenuListItemCard";
 export const FoodMenuItemsList = props => {
   return (
     <HorizontalScrollBar>
-      <AddNewButton label="item" />
+      <AddNewButton label="item" onClick={props.create} />
       <div style={{ margin: "10px", height: "100%" }}>
         <FoodMenuListItemCard
           setEditor={props.setEditor}
