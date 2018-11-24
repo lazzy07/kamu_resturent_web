@@ -4,7 +4,7 @@ import Lottie from "react-lottie";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import { FIREBASE_FUNCTION_URL } from "../../firebase";
+import { FIREBASE_FUNCTION_URL } from "../../firebase/firebase";
 import { doSignInWithEmailAndPassword, authUser } from "../../firebase/auth";
 
 import "font-awesome/css/font-awesome.min.css";

@@ -7,6 +7,22 @@ import "font-awesome/css/font-awesome.min.css";
 
 export class FoodMenuListItemCard extends Component {
   render() {
+    let renderImage = null;
+    if (this.props.image) {
+      renderImage = (
+        <img
+          style={{
+            paddingLeft: "15px",
+            maxWidth: "150px",
+            maxHeight: "150px"
+          }}
+          src={this.props.image}
+          alt=""
+        />
+      );
+    } else {
+      renderImage = <h4 style={{ padding: "5px" }}>No Image</h4>;
+    }
     return (
       <ListElement>
         <div
@@ -44,26 +60,16 @@ export class FoodMenuListItemCard extends Component {
                   fontSize: "26px"
                 }}
               >
-                {getStarRating(this.props.rating)}
+                {getStarRating(this.props.rating.rating)}
               </span>
               <br />
-              <StarRating rating={this.props.rating} />
+              <StarRating rating={this.props.rating.rating} />
               <span>
                 Price : <b>{this.props.price}</b>
               </span>
             </p>
           </div>
-          <div>
-            <img
-              style={{
-                paddingLeft: "15px",
-                maxWidth: "150px",
-                maxHeight: "150px"
-              }}
-              src={this.props.image}
-              alt=""
-            />
-          </div>
+          <div>{renderImage}</div>
           <div
             style={{
               display: "flex",

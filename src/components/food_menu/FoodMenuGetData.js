@@ -24,10 +24,21 @@ export const foodItem_init = {
   name: "New Item",
   parent: "",
   description: "",
-  image: {},
+  image: null,
+  price: 0,
   createdBy: "",
   createdAt: Date.now(),
-  rating: 0,
+  rating: {
+    rating: 0,
+    total: 0,
+    stars: {
+      stars5: 0,
+      stars4: 0,
+      stars3: 0,
+      stars2: 0,
+      stars1: 0
+    }
+  },
   votes: 0
 };
 

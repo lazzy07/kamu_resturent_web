@@ -23,9 +23,24 @@ class FoodMenuScreen extends Component {
     this.state = {
       isNewMenuButtonClicked: false,
       elementsListType: "menus",
-      editorType: "menu"
+      editorType: "none",
+      menu: null,
+      item: null,
+      category: null
     };
   }
+
+  /**
+   * Set menu Editor Data
+   * @param {Object} id id of the editing menu
+   * @param {String} type type of the editor "item" "category" or "menu"
+   * @param {Array} menuArray menu array
+   */
+  setMenuEditor = (id, type, menuArray) => {
+    this.setState({
+      [type]: menuArray[id]
+    });
+  };
 
   changeActiveListType = type => {
     this.setState({
@@ -50,7 +65,12 @@ class FoodMenuScreen extends Component {
               paddingTop: "70px"
             }}
           >
-            <FoodMenuEditorRender type={this.state.editorType} />
+            <FoodMenuEditorRender
+              item={this.state.menu}
+              category={this.state.category}
+              menu={this.state.menu}
+              type={this.state.editorType}
+            />
           </div>
           <FoodMenuTab
             setActive={this.changeActiveListType}
@@ -65,6 +85,7 @@ class FoodMenuScreen extends Component {
             }}
           >
             <FoodMenuElementsList
+              setMenuEditor={this.setMenuEditor}
               setEditor={type => this.changeActiveEditorType(type)}
               listType={this.state.elementsListType}
             />

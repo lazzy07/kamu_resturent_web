@@ -6,7 +6,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import { FIREBASE_FUNCTION_URL } from "../../firebase";
+import { FIREBASE_FUNCTION_URL } from "../../firebase/firebase";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { doSignInWithEmailAndPassword } from "../../firebase/auth";

@@ -14,7 +14,7 @@ const data = {
   name: "My_Item_01",
   description: "no description",
   price: 2000,
-  image: "lol",
+  image: null,
   rating: {
     rating: 4.5,
     total: 15,
@@ -45,6 +45,7 @@ class FoodMenuEditorRender extends Component {
     this.props.loadFoodItems();
   };
 
+  //Styles for the divs used in render
   divStyles = {
     marginBottom: "250px"
   };
@@ -53,21 +54,23 @@ class FoodMenuEditorRender extends Component {
     if (this.props.type === "menu") {
       return (
         <div style={this.divStyles}>
-          <FoodMenuMenuEditor data={dataMenu} />
+          <FoodMenuMenuEditor data={this.props.menu} />
         </div>
       );
     } else if (this.props.type === "category") {
       return (
         <div style={this.divStyles}>
-          <FoodMenuCategoriesEditor data={dataCategory} />
+          <FoodMenuCategoriesEditor data={this.props.category} />
+        </div>
+      );
+    } else if (this.props.type === "item") {
+      return (
+        <div style={this.divStyles}>
+          <FoodMenuItemEditor data={this.props.item} />
         </div>
       );
     } else {
-      return (
-        <div style={this.divStyles}>
-          <FoodMenuItemEditor data={data} />
-        </div>
-      );
+      return <div />;
     }
   }
 }

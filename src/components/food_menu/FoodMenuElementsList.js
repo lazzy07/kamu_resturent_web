@@ -15,6 +15,7 @@ class FoodMenuElementsList extends Component {
       return (
         <div>
           <FoodMenuMenusList
+            setMenuEditor={this.props.setMenuEditor}
             data={this.props.menus}
             create={this.props.createFoodMenu}
             setEditor={this.props.setEditor}
@@ -25,6 +26,7 @@ class FoodMenuElementsList extends Component {
       return (
         <div>
           <FoodMenuItemsList
+            setMenuEditor={this.props.setMenuEditor}
             data={this.props.items}
             create={this.props.createFoodItem}
             setEditor={this.props.setEditor}
@@ -35,6 +37,7 @@ class FoodMenuElementsList extends Component {
       return (
         <div>
           <FoodMenuCategoriesList
+            setMenuEditor={this.props.setMenuEditor}
             data={this.props.categories}
             create={this.props.createFoodCategory}
             setEditor={this.props.setEditor}

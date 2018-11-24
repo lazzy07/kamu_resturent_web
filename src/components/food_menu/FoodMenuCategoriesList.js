@@ -4,17 +4,25 @@ import { AddNewButton } from "../button/AddNewButton";
 import { FoodMenuListCategoryCard } from "./list_cards/FoodMenuListCategoryCard";
 
 export const FoodMenuCategoriesList = props => {
-  return (
-    <HorizontalScrollBar>
-      <AddNewButton label="category" />
-      <div style={{ margin: "10px", height: "100%" }}>
+  let renderArr = props.data.map(elem => {
+    return (
+      <div key={elem.id} style={{ margin: "10px", height: "100%" }}>
         <FoodMenuListCategoryCard
+          id={elem.id}
+          setMenuEditor={props.setMenuEditor}
           setEditor={props.setEditor}
-          name="My Category 01"
+          name={elem.name}
           content={[{ name: "las" }, { name: "las" }, { name: "las" }]}
-          rating={1.55}
+          rating={elem.rating}
         />
       </div>
+    );
+  });
+
+  return (
+    <HorizontalScrollBar>
+      <AddNewButton onClick={props.create} label="category" />
+      {renderArr}
     </HorizontalScrollBar>
   );
 };

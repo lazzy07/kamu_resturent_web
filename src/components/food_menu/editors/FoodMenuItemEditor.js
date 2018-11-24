@@ -2,36 +2,47 @@ import React, { Component } from "react";
 import { FoodMenuEditorTemplate } from "./FoodMenuEditorTemplate";
 import { EditableTextBox } from "../../editable_form/textbox/EditableTextbox";
 import { EditableTextarea } from "../../editable_form/textbox/EditableTextarea";
-import UploadImageButton from "../UploadImageButton";
 import ProgressiveImage from "../../image_loader/ImageLoader";
-
+import { UploadFileButton } from "../../form/UploadFileButton";
 import { StarCountDisplay } from "../../rating_details/StarCountDisplay";
 import { RatingDetailsDisplay } from "../../rating_details/RatingDetailsDisplay";
 
 class FoodMenuItemEditor extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  componentWillMount = () => {
+    this.setState({
+      ...this.props.data
+    });
+  };
+
   render() {
     return (
       <FoodMenuEditorTemplate>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <EditableTextBox
-            value={this.props.data.name}
+            value={this.state.name}
             className="hovarable"
             style={{ margin: "0px", fontWeight: "bold", fontSize: "25px" }}
           />
           <div style={{ display: "flex", alignItems: "center" }}>
             <span>Rs.</span>
             <EditableTextBox
-              value={this.props.data.price}
+              value={this.state.price}
               className="hovarable"
               style={{ margin: "0px", fontWeight: "bold", fontSize: "25px" }}
             />
           </div>
         </div>
         <div style={{ marginTop: "10px", marginBottom: "10px" }}>
-          <EditableTextarea autoFocus value={this.props.data.description} />
+          <EditableTextarea autoFocus value={this.state.description} />
         </div>
         <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
-          {this.props.data.image ? (
+          {this.state.image ? (
             <div style={{ position: "relative" }}>
               <ProgressiveImage
                 preview={"/dependencies/pics/egg.jpg"}
@@ -50,7 +61,9 @@ class FoodMenuItemEditor extends Component {
               </div>
             </div>
           ) : (
-            <UploadImageButton />
+            <div>
+              <UploadFileButton />
+            </div>
           )}
         </div>
         <hr />
@@ -62,13 +75,10 @@ class FoodMenuItemEditor extends Component {
           }}
         >
           <RatingDetailsDisplay
-            rating={this.props.data.rating.rating}
-            total={this.props.data.rating.total}
+            rating={this.state.rating.rating}
+            total={this.state.rating.total}
           />
-          <StarCountDisplay
-            data={this.props.data.rating.stars}
-            barHeight="5px"
-          />
+          <StarCountDisplay data={this.state.rating.stars} barHeight="5px" />
         </div>
         <hr />
       </FoodMenuEditorTemplate>

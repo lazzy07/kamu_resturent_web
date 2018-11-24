@@ -26,8 +26,9 @@ export const loadFoodMenus = () => {
         if (docs.size !== 0) {
           let docArr = [];
           docs.forEach(doc => {
-            docArr.push(doc);
+            docArr.push(doc.data());
           });
+          console.log(docArr);
           dispatch({
             type: LOAD_FOOD_MENUS,
             payload: docArr
@@ -48,7 +49,7 @@ export const loadFoodCategories = () => {
         if (docs.size !== 0) {
           let docArr = [];
           docs.forEach(doc => {
-            docArr.push(doc);
+            docArr.push(doc.data());
           });
           dispatch({
             type: LOAD_FOOD_CATEGORIES,
@@ -70,7 +71,7 @@ export const loadFoodItems = () => {
         if (docs.size !== 0) {
           let docArr = [];
           docs.forEach(doc => {
-            docArr.push(doc);
+            docArr.push(doc.data());
           });
           dispatch({
             type: LOAD_FOOD_ITEMS,
@@ -118,7 +119,7 @@ export const createFoodItem = () => {
     data.createdBy = state().user.userName;
     data.id = createId(state().user.userName, "foodItem");
     db.collection("foodItems")
-      .doc(state().user.userName)
+      .doc(data.id)
       .set(data);
   };
 };
