@@ -138,7 +138,15 @@ export class FoodMenuListCategoryCard extends Component {
                 className="fa fa-lg fa-arrows hoverRed hovarable"
               />
             </div>
-            <div onClick={() => this.props.setEditor("category")}>
+            <div
+              onClick={() =>
+                this.props.setEditor(
+                  "category",
+                  this.props.id,
+                  this.props.categoryList
+                )
+              }
+            >
               <i
                 style={{ padding: "5px" }}
                 className="fa fa-lg fa-edit hoverRed hovarable"

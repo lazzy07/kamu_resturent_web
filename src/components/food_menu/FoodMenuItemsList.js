@@ -9,7 +9,7 @@ export const FoodMenuItemsList = props => {
       <div key={elem.id} style={{ margin: "10px", height: "100%" }}>
         <FoodMenuListItemCard
           id={elem.id}
-          setMenuEditor={props.setMenuEditor}
+          itemList={props.data}
           setEditor={props.setEditor}
           name={elem.name}
           image={elem.image}

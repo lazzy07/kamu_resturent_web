@@ -30,27 +30,28 @@ class FoodMenuScreen extends Component {
     };
   }
 
-  /**
-   * Set menu Editor Data
-   * @param {Object} id id of the editing menu
-   * @param {String} type type of the editor "item" "category" or "menu"
-   * @param {Array} menuArray menu array
-   */
-  setMenuEditor = (id, type, menuArray) => {
-    this.setState({
-      [type]: menuArray[id]
-    });
-  };
-
   changeActiveListType = type => {
     this.setState({
       elementsListType: type
     });
   };
 
-  changeActiveEditorType = type => {
+  /**
+   * Set active menu Editor Data
+   * @param {Object} id id of the editing menu
+   * @param {String} type type of the editor "item" "category" or "menu"
+   * @param {Array} menuArray menu array
+   */
+  changeActiveEditorType = (type, id, menuArray) => {
+    let elem = null;
+    for (let i = 0; i < menuArray.length; i++) {
+      if (menuArray[i].id === id) {
+        elem = menuArray[i];
+      }
+    }
     this.setState({
-      editorType: type
+      editorType: type,
+      [type]: elem
     });
   };
 
@@ -66,7 +67,7 @@ class FoodMenuScreen extends Component {
             }}
           >
             <FoodMenuEditorRender
-              item={this.state.menu}
+              item={this.state.item}
               category={this.state.category}
               menu={this.state.menu}
               type={this.state.editorType}
@@ -85,8 +86,9 @@ class FoodMenuScreen extends Component {
             }}
           >
             <FoodMenuElementsList
-              setMenuEditor={this.setMenuEditor}
-              setEditor={type => this.changeActiveEditorType(type)}
+              setEditor={(type, id, menuArray) =>
+                this.changeActiveEditorType(type, id, menuArray)
+              }
               listType={this.state.elementsListType}
             />
           </div>

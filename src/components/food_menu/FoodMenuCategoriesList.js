@@ -9,7 +9,7 @@ export const FoodMenuCategoriesList = props => {
       <div key={elem.id} style={{ margin: "10px", height: "100%" }}>
         <FoodMenuListCategoryCard
           id={elem.id}
-          setMenuEditor={props.setMenuEditor}
+          categoryList={props.data}
           setEditor={props.setEditor}
           name={elem.name}
           content={[{ name: "las" }, { name: "las" }, { name: "las" }]}
