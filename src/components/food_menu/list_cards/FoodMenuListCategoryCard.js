@@ -3,7 +3,27 @@ import { ListElement } from "../../list_element/ListElement";
 import { StarRating } from "../../star_rating/StarRating";
 import { getStarRating } from "../../star_rating/StarRatingFunctions";
 
-export class FoodMenuListCategoryCard extends Component {
+import { DragSource } from "react-dnd";
+import { FOOD_MENU_ITEM } from "../../../constants/Draggable";
+
+const itemSource = {
+  beginDrag(props) {
+    return {
+      ...props,
+      type: "category"
+    };
+  }
+};
+
+const collect = (connect, monitor) => {
+  return {
+    connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
+    isDragging: monitor.isDragging
+  };
+};
+
+class FoodMenuListCategoryCard extends Component {
   constructor(props) {
     super(props);
 
@@ -66,95 +86,107 @@ export class FoodMenuListCategoryCard extends Component {
   };
 
   render() {
-    return (
-      <ListElement>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            height: "100%",
-            padding: "10px"
-          }}
-        >
+    const { connectDragSource } = this.props;
+
+    return connectDragSource(
+      <div>
+        <ListElement>
           <div
             style={{
               display: "flex",
-              flexDirection: "row",
               alignItems: "center",
-              borderRightWidth: "1px",
-              borderRightStyle: "solid",
-              borderRightColor: "#7a7a7a",
               height: "100%",
-              paddingRight: "5px"
+              padding: "10px"
             }}
           >
-            <div>
-              <p style={{ marginBottom: "1px" }}>
-                <span>
-                  <b style={{ fontSize: "18px" }}>{this.props.name}</b>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                borderRightWidth: "1px",
+                borderRightStyle: "solid",
+                borderRightColor: "#7a7a7a",
+                height: "100%",
+                paddingRight: "5px"
+              }}
+            >
+              <div>
+                <p style={{ marginBottom: "1px" }}>
+                  <span>
+                    <b style={{ fontSize: "18px" }}>{this.props.name}</b>
+                  </span>
+                  <br />
+                  <span style={{ fontSize: "14px", color: "#7a7a7a" }}>
+                    Content:
+                  </span>
+                  <br />
+                </p>
+                <span style={{ fontSize: "12px", color: "#7a7a7a" }}>
+                  {this.contentText(this.props.content)}
                 </span>
-                <br />
-                <span style={{ fontSize: "14px", color: "#7a7a7a" }}>
-                  Content:
-                </span>
-                <br />
-              </p>
-              <span style={{ fontSize: "12px", color: "#7a7a7a" }}>
-                {this.contentText(this.props.content)}
-              </span>
-            </div>
-          </div>
-          <div
-            style={{
-              paddingLeft: "5px",
-              paddingRight: "5px",
-              flexDirection: "row",
-              alignItems: "center",
-              borderRightWidth: "1px",
-              borderRightStyle: "solid",
-              borderRightColor: "#7a7a7a"
-            }}
-          >
-            <p style={{ margin: "0px" }}>Rating :</p>
-            <h1 style={{ margin: "0px", padding: "0px" }}>
-              {getStarRating(this.props.rating)}
-            </h1>
-            <StarRating rating={this.props.rating} />
-            <p style={{ marginBottom: "0px" }}>
-              Price : <b>2000 - 4000</b>
-            </p>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              marginBottom: "20px"
-            }}
-          >
-            <div>
-              <i
-                style={{ padding: "5px", paddingBottom: "20px" }}
-                className="fa fa-lg fa-arrows hoverRed hovarable"
-              />
+              </div>
             </div>
             <div
-              onClick={() =>
-                this.props.setEditor(
-                  "category",
-                  this.props.id,
-                  this.props.categoryList
-                )
-              }
+              style={{
+                paddingLeft: "5px",
+                paddingRight: "5px",
+                flexDirection: "row",
+                alignItems: "center",
+                borderRightWidth: "1px",
+                borderRightStyle: "solid",
+                borderRightColor: "#7a7a7a"
+              }}
             >
-              <i
-                style={{ padding: "5px" }}
-                className="fa fa-lg fa-edit hoverRed hovarable"
-              />
+              <p style={{ margin: "0px" }}>Rating :</p>
+              {this.props.rating ? (
+                <h1 style={{ margin: "0px", padding: "0px" }}>
+                  {getStarRating(this.props.rating)}
+                </h1>
+              ) : (
+                <h4>No Ratings</h4>
+              )}
+              <StarRating rating={this.props.rating} />
+              <p style={{ marginBottom: "0px" }}>
+                Price : <b>2000 - 4000</b>
+              </p>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                marginBottom: "20px"
+              }}
+            >
+              <div>
+                <i
+                  style={{ padding: "5px", paddingBottom: "20px" }}
+                  className="fa fa-lg fa-arrows hoverRed hovarable"
+                />
+              </div>
+              <div
+                onClick={() =>
+                  this.props.setEditor(
+                    "category",
+                    this.props.id,
+                    this.props.categoryList
+                  )
+                }
+              >
+                <i
+                  style={{ padding: "5px" }}
+                  className="fa fa-lg fa-edit hoverRed hovarable"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </ListElement>
+        </ListElement>
+      </div>
     );
   }
 }
+
+export default DragSource(FOOD_MENU_ITEM, itemSource, collect)(
+  FoodMenuListCategoryCard
+);

@@ -1,4 +1,4 @@
-import { db } from "../../firebase/firebase";
+import firebase, { db } from "../../firebase/firebase";
 import {
   foodMenu_init,
   foodCategory_init,
@@ -28,7 +28,6 @@ export const loadFoodMenus = () => {
           docs.forEach(doc => {
             docArr.push(doc.data());
           });
-          console.log(docArr);
           dispatch({
             type: LOAD_FOOD_MENUS,
             payload: docArr
@@ -190,5 +189,36 @@ export const saveFoodItem = id => {
     db.collection("foodItems")
       .doc(id)
       .set(state().foodMenuState.foodItems[id]);
+  };
+};
+
+/**
+ * Adding items to the content of a menu or a category
+ * @param {String} type type "foodItem" "foodCategory"
+ * @param {String} id id of the item that should be added to
+ * @param {Object} data {type: "foodItem" or "foodCategory" id: "id of the added item"}
+ */
+export const addToContent = (type, id, data) => {
+  console.log("run");
+  db.collection(type)
+    .doc(id)
+    .update({
+      content: firebase.firestore.FieldValue.arrayUnion(data)
+    });
+};
+
+/**
+ * Removing items from the content of a menu or a category
+ * @param {String} type type "foodMenus" "foodCategories" to get corrrect db collection
+ * @param {String} id id of the item that should be removed from
+ * @param {Object} data {type: "item" or "category" id: "id of the item to be removed"}
+ */
+export const removeFromContent = (type, id, data) => {
+  return (dispatch, state) => {
+    db.collection(type)
+      .doc(id)
+      .update({
+        content: firebase.firestore.FieldValue.arrayRemove(data)
+      });
   };
 };

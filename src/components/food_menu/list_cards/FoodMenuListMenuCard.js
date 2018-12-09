@@ -59,7 +59,11 @@ export class FoodMenuListMenuCard extends Component {
                   fontSize: "26px"
                 }}
               >
-                {getStarRating(this.props.rating)}
+                {this.props.rating ? (
+                  getStarRating(this.props.rating)
+                ) : (
+                  <span style={{ fontSize: "18px" }}>No Ratings</span>
+                )}
               </span>
               <br />
               <StarRating rating={this.props.rating} />

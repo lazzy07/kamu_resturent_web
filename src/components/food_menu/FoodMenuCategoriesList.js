@@ -1,7 +1,7 @@
 import React from "react";
 import { HorizontalScrollBar } from "../horizontal_scrollbar/HorizontalScrollBar";
 import { AddNewButton } from "../button/AddNewButton";
-import { FoodMenuListCategoryCard } from "./list_cards/FoodMenuListCategoryCard";
+import FoodMenuListCategoryCard from "./list_cards/FoodMenuListCategoryCard";
 
 export const FoodMenuCategoriesList = props => {
   let renderArr = props.data.map(elem => {
@@ -12,7 +12,7 @@ export const FoodMenuCategoriesList = props => {
           categoryList={props.data}
           setEditor={props.setEditor}
           name={elem.name}
-          content={[{ name: "las" }, { name: "las" }, { name: "las" }]}
+          content={elem.content}
           rating={elem.rating}
         />
       </div>

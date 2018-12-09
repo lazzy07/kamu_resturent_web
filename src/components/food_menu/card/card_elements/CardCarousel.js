@@ -11,39 +11,41 @@ export default class CardCarousel extends Component {
   }
 
   contentRender = val => {
-    let offer = true;
-    this.renderContent = val.map((elem, index) => {
-      return (
-        <div
-          key={index}
-          style={{ padding: "20px", backgroundColor: "#e5e6e6" }}
-        >
-          <ProgressiveImage
-            preview={elem.imagePreview}
-            image={elem.image}
-            style={{
-              transform: "translate(0%, 0%)"
-            }}
-          />
+    if (val) {
+      let offer = true;
+      this.renderContent = val.map((elem, index) => {
+        return (
           <div
-            style={{
-              position: "absolute",
-              top: "5px",
-              right: "5px",
-              color: "#fff",
-              backgroundColor: offer ? "#e8232d" : "#7a7a7a",
-              paddingLeft: "5px",
-              paddingRight: "5px"
-            }}
+            key={index}
+            style={{ padding: "20px", backgroundColor: "#e5e6e6" }}
           >
-            <h3>{elem.name}</h3>
-            <span>{elem.price}</span>
-            <br />
-            <strike>{elem.originalPrice}</strike>
+            <ProgressiveImage
+              preview={elem.imagePreview}
+              image={elem.image}
+              style={{
+                transform: "translate(0%, 0%)"
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: "5px",
+                right: "5px",
+                color: "#fff",
+                backgroundColor: offer ? "#e8232d" : "#7a7a7a",
+                paddingLeft: "5px",
+                paddingRight: "5px"
+              }}
+            >
+              <h3>{elem.name}</h3>
+              <span>{elem.price}</span>
+              <br />
+              <strike>{elem.originalPrice}</strike>
+            </div>
           </div>
-        </div>
-      );
-    });
+        );
+      });
+    }
   };
 
   render() {

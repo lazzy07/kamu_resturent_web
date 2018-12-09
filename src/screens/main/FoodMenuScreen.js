@@ -8,6 +8,9 @@ import FoodMenuTab from "../../components/food_menu/FoodMenuTab";
 import FoodMenuElementsList from "../../components/food_menu/FoodMenuElementsList";
 import FoodMenuEditorRender from "../../components/food_menu/editors/FoodMenuEditorRender";
 
+import HTML5Backend from "react-dnd-html5-backend";
+import { DragDropContext } from "react-dnd";
+
 const defaultOptions = {
   loop: true,
   autoplay: true,
@@ -24,6 +27,7 @@ class FoodMenuScreen extends Component {
       isNewMenuButtonClicked: false,
       elementsListType: "menus",
       editorType: "none",
+      active: 0,
       menu: null,
       item: null,
       category: null
@@ -43,15 +47,18 @@ class FoodMenuScreen extends Component {
    * @param {Array} menuArray menu array
    */
   changeActiveEditorType = (type, id, menuArray) => {
-    let elem = null;
+    let elem = 0;
     for (let i = 0; i < menuArray.length; i++) {
-      if (menuArray[i].id === id) {
-        elem = menuArray[i];
+      if (this.props[type]) {
+        if (this.props[type][i].id === id) {
+          elem = i;
+        }
       }
     }
+
     this.setState({
       editorType: type,
-      [type]: elem
+      active: elem
     });
   };
 
@@ -67,9 +74,13 @@ class FoodMenuScreen extends Component {
             }}
           >
             <FoodMenuEditorRender
-              item={this.state.item}
-              category={this.state.category}
-              menu={this.state.menu}
+              item={this.props.item ? this.props.item[this.state.active] : null}
+              category={
+                this.props.category
+                  ? this.props.category[this.state.active]
+                  : null
+              }
+              menu={this.props.menu ? this.props.menu[this.state.active] : null}
               type={this.state.editorType}
             />
           </div>
@@ -143,7 +154,15 @@ class FoodMenuScreen extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    menu: state.foodMenuState.foodMenus,
+    category: state.foodMenuState.foodCategories,
+    item: state.foodMenuState.foodItems
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   null
-)(FoodMenuScreen);
+)(DragDropContext(HTML5Backend)(FoodMenuScreen));

@@ -4,45 +4,24 @@ import { getStarRating } from "../../star_rating/StarRatingFunctions";
 import Button from "../../button/Button";
 import CardCarousel from "./card_elements/CardCarousel";
 
-import { DragSource } from "react-dnd";
-
-const itemSource = {
-  beginDrag(props) {
-    return props.item;
-  },
-  endDrag(props, monitor, component) {
-    return props.handledrop(props.item.id);
-  }
-};
-
-const collect = (connect, monitor) => {
-  return {
-    connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging
-  };
-};
-
-const styles = {
-  discountedPrice: {
-    color: "#e8233d",
-    fontWeight: "bold"
-  },
-  nodiscount: {
-    color: "#252525"
-  },
-  discountPriceTag: {
-    color: "#252525",
-    textDecoration: "line-through",
-    textDecorationColor: "#e8232d"
-  }
-};
+// const styles = {
+//   discountedPrice: {
+//     color: "#e8233d",
+//     fontWeight: "bold"
+//   },
+//   nodiscount: {
+//     color: "#252525"
+//   },
+//   discountPriceTag: {
+//     color: "#252525",
+//     textDecoration: "line-through",
+//     textDecorationColor: "#e8232d"
+//   }
+// };
 
 class FoodCategoryCard extends Component {
   render() {
-    const { isDragging, connectDragSource, item } = this.props;
-
-    return connectDragSource(
+    return (
       <div
         style={{
           height: "450px",
@@ -102,4 +81,4 @@ class FoodCategoryCard extends Component {
   }
 }
 
-export default DragSource("item", itemSource, collect)(FoodCategoryCard);
+export default FoodCategoryCard;

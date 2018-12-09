@@ -1,7 +1,7 @@
 import React from "react";
 import { HorizontalScrollBar } from "../horizontal_scrollbar/HorizontalScrollBar";
 import { AddNewButton } from "../button/AddNewButton";
-import { FoodMenuListItemCard } from "./list_cards/FoodMenuListItemCard";
+import FoodMenuListItemCard from "./list_cards/FoodMenuListItemCard";
 
 export const FoodMenuItemsList = props => {
   let renderArr = props.data.map(elem => {

@@ -26,7 +26,7 @@ export class EditableTextarea extends Component {
             name={this.props.name}
             rows={this.props.rows || 1}
             placeHolder={this.props.placeHolder}
-            onChange={this.props.onChange}
+            onChange={data => this.props.onChange(data)}
           />
         </div>
       );

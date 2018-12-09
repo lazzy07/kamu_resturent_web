@@ -23,24 +23,24 @@ const collect = (connect, monitor) => {
   };
 };
 
-const styles = {
-  discountedPrice: {
-    color: "#e8233d",
-    fontWeight: "bold"
-  },
-  nodiscount: {
-    color: "#252525"
-  },
-  discountPriceTag: {
-    color: "#252525",
-    textDecoration: "line-through",
-    textDecorationColor: "#e8232d"
-  }
-};
+// const styles = {
+//   discountedPrice: {
+//     color: "#e8233d",
+//     fontWeight: "bold"
+//   },
+//   nodiscount: {
+//     color: "#252525"
+//   },
+//   discountPriceTag: {
+//     color: "#252525",
+//     textDecoration: "line-through",
+//     textDecorationColor: "#e8232d"
+//   }
+// };
 
 class FoodMenuCard extends Component {
   render() {
-    const { isDragging, connectDragSource, item } = this.props;
+    const { connectDragSource } = this.props;
 
     return connectDragSource(
       <div>

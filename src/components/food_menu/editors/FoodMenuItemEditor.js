@@ -8,45 +8,43 @@ import { StarCountDisplay } from "../../rating_details/StarCountDisplay";
 import { RatingDetailsDisplay } from "../../rating_details/RatingDetailsDisplay";
 
 class FoodMenuItemEditor extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
-  componentWillMount = () => {
-    this.setState({
-      ...this.props.data
-    });
-  };
-
   render() {
     return (
       <FoodMenuEditorTemplate>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <EditableTextBox
-            value={this.state.name}
+            value={this.props.data.name}
+            onChange={this.props.changeFoodItemName}
             className="hovarable"
             style={{ margin: "0px", fontWeight: "bold", fontSize: "25px" }}
           />
           <div style={{ display: "flex", alignItems: "center" }}>
             <span>Rs.</span>
             <EditableTextBox
-              value={this.state.price}
+              value={this.props.data.price.toString()}
+              onChange={this.props.changeFoodItemprice}
               className="hovarable"
               style={{ margin: "0px", fontWeight: "bold", fontSize: "25px" }}
             />
           </div>
         </div>
         <div style={{ marginTop: "10px", marginBottom: "10px" }}>
-          <EditableTextarea autoFocus value={this.state.description} />
+          <EditableTextarea
+            autoFocus
+            onChange={this.props.changeFoodItemDescription}
+            value={
+              this.props.data.description === ""
+                ? "No description"
+                : this.props.data.description
+            }
+          />
         </div>
         <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
-          {this.state.image ? (
+          {this.props.data.image ? (
             <div style={{ position: "relative" }}>
               <ProgressiveImage
-                preview={"/dependencies/pics/egg.jpg"}
-                image={"https://dummyimage.com/2000"}
+                preview={this.props.data.image.preview}
+                image={this.props.data.image}
               />
               <div
                 className="hovarable hoverRed"
@@ -75,10 +73,13 @@ class FoodMenuItemEditor extends Component {
           }}
         >
           <RatingDetailsDisplay
-            rating={this.state.rating.rating}
-            total={this.state.rating.total}
+            rating={this.props.data.rating.rating}
+            total={this.props.data.rating.total}
           />
-          <StarCountDisplay data={this.state.rating.stars} barHeight="5px" />
+          <StarCountDisplay
+            data={this.props.data.rating.stars}
+            barHeight="5px"
+          />
         </div>
         <hr />
       </FoodMenuEditorTemplate>
